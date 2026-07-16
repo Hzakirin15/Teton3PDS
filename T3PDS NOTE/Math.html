@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Kids</title>
+    <link rel="stylesheet" href="Math.css">
+</head>
+<body>
+    <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">← Back</a>
+
+    <div class="game-container">
+        <div class="header">
+            <h1>🧮 Math Kids</h1>
+            <div class="game-info">
+                <div class="timer">
+                    <div class="timer-label">Time Left</div>
+                    <div class="timer-display" id="timer">60s</div>
+                </div>
+                <div class="score">
+                    <div class="score-label">Score</div>
+                    <div class="score-display" id="score">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-section">
+            <div class="username-input">
+                <input type="text" id="usernameInput" placeholder="Enter your username" maxlength="15">
+                <button id="saveUsernameBtn" class="save-btn">Save</button>
+            </div>
+            <div class="current-user" id="currentUserDisplay">
+                Player: <span id="currentUsername">Guest</span>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="question-container">
+                <div class="question" id="question">5 + 3 = ?</div>
+                <div class="input-container">
+                    <input type="number" id="answerInput" placeholder="Enter answer..." min="-999" max="999">
+                    <button id="submitBtn" class="submit-btn">Enter</button>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat correct">
+                    <span class="stat-label">Correct:</span>
+                    <span class="stat-value" id="correctCount">0</span>
+                </div>
+                <div class="stat wrong">
+                    <span class="stat-label">Wrong:</span>
+                    <span class="stat-value" id="wrongCount">0</span>
+                </div>
+                <div class="stat accuracy">
+                    <span class="stat-label">Accuracy:</span>
+                    <span class="stat-value" id="accuracy">0%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn" class="control-btn start">Start Game</button>
+            <button id="pauseBtn" class="control-btn pause" disabled>Pause</button>
+            <button id="resetBtn" class="control-btn reset">Reset</button>
+            <button id="showHistoryBtn" class="control-btn history">History</button>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Play:</h3>
+            <p>• Solve the math problems as quickly as possible</p>
+            <p>• You have 60 seconds to answer as many as you can</p>
+            <p>• Only whole numbers are accepted</p>
+            <p>• Press Enter or click the button to submit your answer</p>
+        </div>
+    </div>
+
+    <div id="gameOver" class="game-over hidden">
+        <div class="game-over-content">
+            <h2>Time's Up! ⏰</h2>
+            <div class="final-stats">
+                <div class="final-stat">
+                    <span>Player:</span>
+                    <span id="finalPlayer">Guest</span>
+                </div>
+                <div class="final-stat">
+                    <span>Final Score:</span>
+                    <span id="finalScore">0</span>
+                </div>
+                <div class="final-stat">
+                    <span>Correct Answers:</span>
+                    <span id="finalCorrect">0</span>
+                </div>
+                <div class="final-stat">
+                    <span>Accuracy:</span>
+                    <span id="finalAccuracy">0%</span>
+                </div>
+            </div>
+            <button id="playAgainBtn" class="play-again-btn">Play Again</button>
+        </div>
+    </div>
+
+    <div id="historyModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>🏆 Score History</h2>
+                <button id="closeHistoryBtn" class="close-btn">&times;</button>
+            </div>
+            <div class="history-controls">
+                <button id="clearHistoryBtn" class="control-btn clear">Clear History</button>
+                <button id="exportHistoryBtn" class="control-btn export">Export</button>
+            </div>
+            <div class="history-list" id="historyList">
+                <!-- History items will be inserted here -->
+            </div>
+            <div class="no-history" id="noHistoryMessage">
+                No game history yet. Play a game to see your scores!
+            </div>
+        </div>
+    </div>
+
+    <script src="Math.js"></script>
+</body>
+</html>

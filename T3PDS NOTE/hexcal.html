@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hex Calculator</title>
+    <link rel="stylesheet" href="hexcal.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Hex Calculator</h1>
+        
+        <div class="calculator-box">
+            <h2>Hex Subtraction</h2>
+            <div class="calculation-group">
+                <input type="text" id="hexInput" placeholder="Enter hex number" class="hex-input">
+                <span class="operator"> - 1 = </span>
+                <span id="hexResult" class="result-box"></span>
+                <button class="calculate-btn" onclick="calculateHex()">Calculate</button>
+                <button class="copy-btn" onclick="copyResult()">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="hexcal.js"></script>
+</body>
+</html>

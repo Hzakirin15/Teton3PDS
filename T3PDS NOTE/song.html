@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MP3 Player - Auto Detection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #121212 0%, #1a2b1a 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-bottom: 2px solid #2E7D32;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+        }
+
+        .subtitle {
+            color: #aaa;
+            font-size: 1.2rem;
+        }
+
+        .player-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .player-controls {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1E1E1E;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .now-playing {
+            margin-bottom: 20px;
+            text-align: center;
+            padding: 15px;
+            background-color: #252525;
+            border-radius: 10px;
+        }
+
+        #current-song {
+            font-size: 1.4rem;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .control-btn {
+            background-color: #2E7D32;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            min-width: 120px;
+        }
+
+        .control-btn:hover {
+            background-color: #4CAF50;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(76, 175, 80, 0.4);
+        }
+
+        .control-btn:active {
+            transform: translateY(0);
+        }
+
+        .progress-container {
+            margin-top: 25px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #2E7D32 0%, #4CAF50 100%);
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .time-display {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .songs-list {
+            flex: 1;
+            min-width: 300px;
+            background-color: #1E1E1E;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .songs-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            color: #4CAF50;
+            font-size: 1.8rem;
+        }
+
+        #refresh-btn {
+            background-color: #2E7D32;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        #refresh-btn:hover {
+            background-color: #4CAF50;
+        }
+
+        #songs-container {
+            list-style-type: none;
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+            background-color: #252525;
+            padding: 10px;
+        }
+
+        .song-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #333;
+            transition: background-color 0.3s;
+        }
+
+        .song-item:hover {
+            background-color: #2a2a2a;
+        }
+
+        .song-info {
+            flex-grow: 1;
+        }
+
+        .song-title {
+            font-weight: bold;
+            color: #e0e0e0;
+            font-size: 1.1rem;
+        }
+
+        .song-artist {
+            font-size: 0.95rem;
+            color: #888;
+        }
+
+        .song-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .song-btn {
+            background-color: #2E7D32;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .song-btn:hover {
+            background-color: #4CAF50;
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        #volume {
+            width: 100%;
+            accent-color: #4CAF50;
+        }
+
+        .instructions {
+            background-color: #1E1E1E;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        .instructions h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            line-height: 1.6;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .player-container {
+                flex-direction: column;
+            }
+            
+            .control-btn {
+                min-width: 100px;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MP3 Player</h1>
+            <p class="subtitle">Auto-detecting MP3 files with browser storage simulation</p>
+        </header>
+        
+        <div class="player-container">
+            <div class="player-controls">
+                <audio id="audio-player" controls style="display: none;"></audio>
+                <div class="now-playing">
+                    <span id="current-song">No song selected</span>
+                </div>
+                <div class="controls">
+                    <button id="play-btn" class="control-btn">Play</button>
+                    <button id="pause-btn" class="control-btn">Pause</button>
+                    <button id="stop-btn" class="control-btn">Stop</button>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="current-time">0:00</span>
+                        <span id="total-time">0:00</span>
+                    </div>
+                </div>
+                <div class="volume-control">
+                    <span>Volume:</span>
+                    <input type="range" id="volume" min="0" max="1" step="0.1" value="0.7">
+                </div>
+            </div>
+            
+            <div class="songs-list">
+                <div class="songs-header">
+                    <h2>Available Songs</h2>
+                    <button id="refresh-btn">Refresh</button>
+                </div>
+                <ul id="songs-container">
+                    <li class="song-item">Loading songs...</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>How to Use This MP3 Player</h3>
+            <ul>
+                <li>This player simulates auto-detection of MP3 files using browser storage</li>
+                <li>Click the Refresh button to load the demo songs</li>
+                <li>Use the Play, Pause, and Stop buttons to control playback</li>
+                <li>Click on any song in the list to play it directly</li>
+                <li>Adjust volume using the slider</li>
+                <li>Click on the progress bar to jump to a specific position in the song</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Audio element and control buttons
+            const audioPlayer = document.getElementById('audio-player');
+            const playBtn = document.getElementById('play-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const stopBtn = document.getElementById('stop-btn');
+            const refreshBtn = document.getElementById('refresh-btn');
+            const volumeControl = document.getElementById('volume');
+            const currentSongDisplay = document.getElementById('current-song');
+            const currentTimeDisplay = document.getElementById('current-time');
+            const totalTimeDisplay = document.getElementById('total-time');
+            const progressBar = document.querySelector('.progress');
+            const songsContainer = document.getElementById('songs-container');
+            
+            // State variables
+            let currentSong = null;
+            let songs = [];
+            
+            // Demo songs data
+            const demoSongs = [
+                { title: "REBEL HEART MV", artist: "DJ Green", file: "REBEL HEART MV.mp3" },
+                { title: "Night Forest", artist: "Nature Sounds", file: "song2.mp3" },
+                { title: "Chill Beats", artist: "Lo-Fi Producer", file: "song3.mp3" },
+                { title: "Morning Coffee", artist: "Acoustic Ensemble", file: "song4.mp3" },
+                { title: "Urban Jungle", artist: "City Beats", file: "song5.mp3" }
+            ];
+            
+            // Initialize the player
+            function initPlayer() {
+                // Try to load songs from localStorage
+                const storedSongs = localStorage.getItem('mp3Songs');
+                
+                if (storedSongs) {
+                    songs = JSON.parse(storedSongs);
+                    renderSongsList();
+                } else {
+                    songsContainer.innerHTML = '<li class="song-item">No songs found. Click Refresh to load demo songs.</li>';
+                }
+                
+                // Set up event listeners for player controls
+                setupEventListeners();
+            }
+            
+            // Render the list of songs
+            function renderSongsList() {
+                songsContainer.innerHTML = '';
+                
+                if (songs.length === 0) {
+                    songsContainer.innerHTML = '<li class="song-item">No songs available</li>';
+                    return;
+                }
+                
+                songs.forEach((song, index) => {
+                    const songItem = document.createElement('li');
+                    songItem.className = 'song-item';
+                    
+                    songItem.innerHTML = `
+                        <div class="song-info">
+                            <div class="song-title">${song.title}</div>
+                            <div class="song-artist">${song.artist}</div>
+                        </div>
+                        <div class="song-actions">
+                            <button class="song-btn play-song" data-index="${index}">Play</button>
+                        </div>
+                    `;
+                    
+                    songsContainer.appendChild(songItem);
+                });
+            }
+            
+            // Set up event listeners
+            function setupEventListeners() {
+                // Main control buttons
+                playBtn.addEventListener('click', playCurrentSong);
+                pauseBtn.addEventListener('click', pauseCurrentSong);
+                stopBtn.addEventListener('click', stopCurrentSong);
+                refreshBtn.addEventListener('click', refreshSongs);
+                
+                // Volume control
+                volumeControl.addEventListener('input', () => {
+                    audioPlayer.volume = volumeControl.value;
+                });
+                
+                // Song list buttons (using event delegation)
+                songsContainer.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('play-song')) {
+                        const index = parseInt(e.target.getAttribute('data-index'));
+                        playSong(index);
+                    } else if (e.target.classList.contains('song-item')) {
+                        const index = Array.from(songsContainer.children).indexOf(e.target);
+                        if (index >= 0) playSong(index);
+                    }
+                });
+                
+                // Audio player events
+                audioPlayer.addEventListener('timeupdate', updateProgress);
+                audioPlayer.addEventListener('ended', function() {
+                    stopCurrentSong();
+                });
+                
+                // Progress bar seeking
+                document.querySelector('.progress-bar').addEventListener('click', function(e) {
+                    if (audioPlayer.duration) {
+                        const percent = e.offsetX / this.offsetWidth;
+                        audioPlayer.currentTime = percent * audioPlayer.duration;
+                        updateProgress();
+                    }
+                });
+            }
+            
+            // Refresh the song list
+            function refreshSongs() {
+                // For demo purposes, we'll use the demo songs
+                // In a real application, this would fetch from a server
+                songs = [...demoSongs];
+                
+                // Save to localStorage to simulate persistence
+                localStorage.setItem('mp3Songs', JSON.stringify(songs));
+                
+                // Render the updated list
+                renderSongsList();
+                
+                // Show a notification
+                currentSongDisplay.textContent = "Songs refreshed successfully!";
+                setTimeout(() => {
+                    if (currentSong !== null) {
+                        const song = songs[currentSong];
+                        currentSongDisplay.textContent = `${song.title} - ${song.artist}`;
+                    } else {
+                        currentSongDisplay.textContent = "No song selected";
+                    }
+                }, 2000);
+            }
+            
+            // Play a specific song
+            function playSong(index) {
+                if (songs[index]) {
+                    currentSong = index;
+                    const song = songs[index];
+                    
+                    // For demonstration, we'll use placeholder audio since we can't access local files
+                    // In a real application, you would set the actual file path
+                    audioPlayer.src = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+                    
+                    // Update the display
+                    currentSongDisplay.textContent = `${song.title} - ${song.artist}`;
+                    
+                    // Play the song
+                    audioPlayer.play()
+                        .then(() => {
+                            console.log(`Playing: ${song.title}`);
+                        })
+                        .catch(error => {
+                            console.error('Error playing song:', error);
+                            currentSongDisplay.textContent = `Error playing: ${song.title}`;
+                        });
+                }
+            }
+            
+            // Play the current song
+            function playCurrentSong() {
+                if (currentSong !== null) {
+                    audioPlayer.play();
+                } else if (songs.length > 0) {
+                    // If no song is selected, play the first one
+                    playSong(0);
+                }
+            }
+            
+            // Pause the current song
+            function pauseCurrentSong() {
+                audioPlayer.pause();
+            }
+            
+            // Stop the current song
+            function stopCurrentSong() {
+                audioPlayer.pause();
+                audioPlayer.currentTime = 0;
+                updateProgress();
+            }
+            
+            // Update the progress bar and time display
+            function updateProgress() {
+                if (audioPlayer.duration) {
+                    const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                    progressBar.style.width = `${percent}%`;
+                    
+                    // Update time displays
+                    currentTimeDisplay.textContent = formatTime(audioPlayer.currentTime);
+                    totalTimeDisplay.textContent = formatTime(audioPlayer.duration);
+                }
+            }
+            
+            // Format time in minutes:seconds
+            function formatTime(seconds) {
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+            
+            // Initialize the player when the page loads
+            initPlayer();
+        });
+    </script>
+</body>
+</html>
