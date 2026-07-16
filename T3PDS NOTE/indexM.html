@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Launcher</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <style>
+        :root {
+            --primary-color: #BB86FC;
+            --primary-variant: #3700B3;
+            --secondary-color: #03DAC6;
+            --background: #121212;
+            --surface: #1E1E1E;
+            --error: #CF6679;
+            --on-primary: #000000;
+            --on-secondary: #000000;
+            --on-background: #FFFFFF;
+            --on-surface: #FFFFFF;
+            --on-error: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--on-background);
+            min-height: 100vh;
+            padding-bottom: 80px;
+        }
+
+        .header {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--surface);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .search-bar {
+            flex-grow: 1;
+            margin: 0 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 8px 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            background: transparent;
+            border: none;
+            color: var(--on-surface);
+            width: 100%;
+            outline: none;
+            margin-left: 10px;
+        }
+
+        .search-bar i {
+            color: var(--on-surface);
+            opacity: 0.7;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .app-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .app-icon div {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            color: var(--on-primary);
+            font-size: 24px;
+        }
+
+        .app-icon span {
+            font-size: 12px;
+            color: var(--on-surface);
+            max-width: 80px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .dock {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--surface);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-around;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dock-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .dock-icon div {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .dock-icon span {
+            font-size: 10px;
+            color: var(--on-surface);
+        }
+
+        .no-apps {
+            text-align: center;
+            padding: 50px;
+            color: var(--on-surface);
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .app-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 15px;
+            }
+            
+            .app-icon div {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <i class="material-icons">menu</i>
+        <div class="search-bar">
+            <i class="material-icons">search</i>
+            <input type="text" placeholder="Search apps..." id="searchInput">
+        </div>
+        <i class="material-icons">account_circle</i>
+    </div>
+
+    <div class="app-grid" id="appGrid">
+        <!-- Apps will be dynamically inserted here -->
+    </div>
+
+    <div class="no-apps" id="noApps" style="display: none;">
+        No HTML apps found in this directory.
+    </div>
+
+    <div class="dock">
+        <div class="dock-icon" onclick="location.reload()">
+            <div><i class="material-icons">refresh</i></div>
+            <span>Refresh</span>
+        </div>
+        <div class="dock-icon" onclick="addNewApp()">
+            <div><i class="material-icons">add</i></div>
+            <span>Add App</span>
+        </div>
+        <div class="dock-icon" onclick="showHelp()">
+            <div><i class="material-icons">help</i></div>
+            <span>Help</span>
+        </div>
+    </div>
+
+    <script>
+        // List of known HTML files (will be populated automatically and saved to localStorage)
+        let htmlFiles = [];
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load saved files from localStorage
+            const savedFiles = localStorage.getItem('htmlFiles');
+            if (savedFiles) {
+                htmlFiles = JSON.parse(savedFiles);
+                createAppIcons(htmlFiles);
+            } else {
+                // Try to auto-detect files (this will only work for files linked in the page)
+                detectHtmlFiles();
+            }
+            
+            // Setup search functionality
+            document.getElementById('searchInput').addEventListener('input', function() {
+                filterApps(this.value.toLowerCase());
+            });
+        });
+        
+        function detectHtmlFiles() {
+            // This will find all <a> tags pointing to .html files in the same directory
+            const links = document.querySelectorAll('a[href$=".html"]');
+            const detectedFiles = [];
+            
+            links.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href !== 'index.html' && !detectedFiles.includes(href)) {
+                    detectedFiles.push(href);
+                }
+            });
+            
+            if (detectedFiles.length > 0) {
+                htmlFiles = detectedFiles;
+                localStorage.setItem('htmlFiles', JSON.stringify(htmlFiles));
+                createAppIcons(htmlFiles);
+            } else {
+                // If no files detected, show the "no apps" message
+                document.getElementById('noApps').style.display = 'block';
+            }
+        }
+        
+        function createAppIcons(files) {
+            const appGrid = document.getElementById('appGrid');
+            appGrid.innerHTML = ''; // Clear existing apps
+            
+            if (files.length === 0) {
+                document.getElementById('noApps').style.display = 'block';
+                return;
+            }
+            
+            files.forEach(file => {
+                const appName = file.replace('.html', '').replace(/-/g, ' ');
+                const appIcon = document.createElement('div');
+                appIcon.className = 'app-icon';
+                appIcon.innerHTML = `
+                    <div><i class="material-icons">apps</i></div>
+                    <span>${appName}</span>
+                `;
+                
+                appIcon.addEventListener('click', () => {
+                    window.location.href = file;
+                });
+                
+                appGrid.appendChild(appIcon);
+            });
+        }
+        
+        function filterApps(searchTerm) {
+            const appIcons = document.querySelectorAll('.app-icon');
+            let visibleCount = 0;
+            
+            appIcons.forEach(icon => {
+                const appName = icon.querySelector('span').textContent.toLowerCase();
+                if (appName.includes(searchTerm)) {
+                    icon.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    icon.style.display = 'none';
+                }
+            });
+            
+            document.getElementById('noApps').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+        
+        function addNewApp() {
+            const fileName = prompt('Enter the HTML file name (with .html extension):');
+            if (fileName && fileName.endsWith('.html') && fileName !== 'index.html') {
+                if (!htmlFiles.includes(fileName)) {
+                    htmlFiles.push(fileName);
+                    localStorage.setItem('htmlFiles', JSON.stringify(htmlFiles));
+                    createAppIcons(htmlFiles);
+                } else {
+                    alert('This app is already added!');
+                }
+            } else if (fileName) {
+                alert('Please enter a valid HTML file name (e.g., "app.html")');
+            }
+        }
+        
+        function showHelp() {
+            alert(`HOW TO USE THIS APP LAUNCHER:
+1. The launcher will try to auto-detect HTML files in the same folder.
+2. If auto-detection fails, use the "Add App" button to manually add your HTML files.
+3. Added apps are saved in your browser's storage.
+4. Use the search bar to filter apps by name.
+5. Click "Refresh" to reload the launcher.`);
+        }
+    </script>
+</body>
+</html>

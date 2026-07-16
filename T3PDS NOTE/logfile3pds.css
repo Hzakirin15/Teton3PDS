@@ -1,0 +1,380 @@
+/* logfile3pds.css - Tablet-optimized professional friendly UI */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    background: linear-gradient(145deg, #e9eef3 0%, #dfe6ed 100%);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, 'San Francisco', BlinkMacSystemFont, sans-serif;
+    padding: 24px 20px 32px 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* tablet app container */
+.app-container {
+    max-width: 820px;
+    width: 100%;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(2px);
+    border-radius: 56px;
+    padding: 20px 24px 28px 24px;
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+/* header with modern tablet style - back button now inside header */
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background: #ffffffdd;
+    backdrop-filter: blur(8px);
+    background: linear-gradient(115deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 48px;
+    padding: 16px 28px;
+    margin-bottom: 28px;
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.6);
+}
+
+/* left group containing back button, icon, and title */
+.header-left-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Back button styling - now inline with logo */
+.back-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(59, 130, 246, 0.1);
+    backdrop-filter: blur(4px);
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1e4a6e;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.back-button .back-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.2s ease;
+}
+
+.back-button:hover {
+    background: #ffffff;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transform: translateX(-2px);
+}
+
+.back-button:hover .back-arrow {
+    transform: translateX(-2px);
+}
+
+.back-button:active {
+    transform: translateX(0px);
+}
+
+.header-icon {
+    font-size: 1.8rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+    line-height: 1;
+}
+
+.app-header h1 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    background: linear-gradient(135deg, #1A2A3F, #2C3E50);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.header-sub {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #4a5b6e;
+    background: #eef2f8;
+    padding: 5px 14px;
+    border-radius: 40px;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
+}
+
+/* card - professional friendly tablet look */
+.card-section {
+    background: #ffffff;
+    border-radius: 44px;
+    margin-bottom: 28px;
+    padding: 0;
+    box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.01);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 32px -12px rgba(0, 0, 0, 0.12);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 28px 8px 28px;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.title-badge {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.card-header h2 {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #1e2f3e;
+    letter-spacing: -0.2px;
+    background: linear-gradient(135deg, #2c3e50, #1a2a3a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.version-tag {
+    background: #eef2fa;
+    padding: 4px 12px;
+    border-radius: 40px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #2c6280;
+    letter-spacing: 0.3px;
+}
+
+/* search area - modified: no description, button beside input */
+.search-area {
+    padding: 16px 28px 20px 28px;
+}
+
+.input-group {
+    margin-bottom: 8px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #1e3b4f;
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+}
+
+/* row layout for input + button side by side */
+.search-wrapper-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.search-wrapper {
+    position: relative;
+    flex: 2;
+    min-width: 200px;
+}
+
+.search-wrapper input {
+    width: 100%;
+    padding: 14px 48px 14px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 60px;
+    background: #ffffff;
+    transition: all 0.2s;
+    font-family: 'Inter', monospace;
+    letter-spacing: 0.2px;
+    color: #0b2b3b;
+    outline: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+}
+
+.search-wrapper input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+.search-wrapper .search-icon {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    color: #94a3b8;
+    pointer-events: none;
+}
+
+/* button style - beside search */
+.btn-open {
+    background: linear-gradient(105deg, #1f6392, #1a4e73);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 60px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.btn-open:hover {
+    background: linear-gradient(105deg, #1173a8, #104d6e);
+    transform: scale(0.98);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.btn-open:active {
+    transform: scale(0.96);
+}
+
+.btn-open:disabled {
+    background: #b9cad9;
+    transform: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+}
+
+/* info note only, no preview */
+.info-note {
+    padding: 12px 28px 22px 28px;
+    border-top: 1px solid #ecf3f8;
+    font-size: 0.75rem;
+    color: #5282a3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.info-note kbd {
+    background: #eef2f7;
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-weight: 600;
+    color: #1a4970;
+    box-shadow: inset 0 1px 0 0 #ffffff, 0 1px 0 #cdd9e6;
+}
+
+/* footer tablet style */
+.app-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 18px 0 18px;
+    font-size: 0.7rem;
+    color: #5f7f97;
+    border-top: 1px solid rgba(100, 116, 139, 0.2);
+    font-weight: 500;
+}
+
+/* responsive tablet handling */
+@media (max-width: 680px) {
+    body {
+        padding: 16px;
+    }
+    .app-container {
+        padding: 16px;
+    }
+    .app-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 14px;
+        padding: 18px 22px;
+    }
+    .header-left-group {
+        justify-content: flex-start;
+    }
+    .header-sub {
+        align-self: flex-start;
+        white-space: normal;
+    }
+    .card-header h2 {
+        font-size: 1.4rem;
+    }
+    .search-wrapper-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+    .btn-open {
+        justify-content: center;
+        white-space: normal;
+        padding: 12px 20px;
+    }
+    .search-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-left-group {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .app-header h1 {
+        font-size: 1.4rem;
+    }
+    .back-button {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    .card-header {
+        padding: 16px 20px 4px 20px;
+    }
+    .search-area {
+        padding: 12px 20px 16px 20px;
+    }
+    .info-note {
+        padding: 10px 20px 18px 20px;
+    }
+}
+
+/* input placeholder style */
+::placeholder {
+    color: #b9c8da;
+    font-weight: 400;
+}
+
+/* custom focus ring */
+button:focus-visible, input:focus-visible {
+    outline: 2px solid #2c7cb6;
+    outline-offset: 2px;
+}

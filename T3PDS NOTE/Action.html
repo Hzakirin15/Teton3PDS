@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Action To Do</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Action To Do</h1>
+        <div id="testCaseForm" class="form-container">
+            <div class="input-group">
+                <label for="rackNumber">Rack Number:</label>
+                <input type="text" id="rackNumber" placeholder="Enter rack number">
+            </div>
+            <div class="input-group">
+                <label for="position">Position:</label>
+                <select id="position">
+                    <option value="">Select position</option>
+                    <option value="TOP">TOP</option>
+                    <option value="BOT">BOT</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="caseNumber">Case Number:</label>
+                <input type="text" id="caseNumber" placeholder="Enter case number">
+            </div>
+            <div class="input-group">
+                <label for="testCase">Test Case:</label>
+                <input type="text" id="testCase" placeholder="Enter test case">
+            </div>
+            <div class="input-group">
+                <label for="error">Error:</label>
+                <div class="error-input">
+                    <input type="text" id="error" placeholder="Enter error">
+                    <button id="addErrorBtn" class="btn">Add Error</button>
+                </div>
+                <div id="errorContainer"></div> <!-- New container for additional error inputs -->
+            </div>
+            <div class="input-group">
+                <label for="action">Action:</label>
+                <input type="text" id="action" placeholder="Enter action">
+            </div>
+            <button id="generateBtn" class="btn generate-btn">Generate Test Case</button>
+        </div>
+        <button id="addNewBtn" class="btn add-new-btn">Add New Test Case</button>
+        <div id="testCasesContainer" class="test-cases-container"></div> 
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

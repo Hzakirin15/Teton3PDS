@@ -1,0 +1,439 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Dark mode base */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    padding: 25px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #2a9d8f;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #2a9d8f;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #b0b0b0;
+    font-style: italic;
+}
+
+/* Game Area Layout */
+.game-area {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.left-panel {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.game-board {
+    flex: 2;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Game Info Cards */
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.info-card {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    flex: 1;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+}
+
+.info-card h3 {
+    color: #2a9d8f;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.time-display, .score-display, .level-display {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #e9c46a;
+}
+
+/* Controls */
+.controls {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+}
+
+.difficulty-selector h3 {
+    color: #2a9d8f;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.difficulty-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.difficulty-btn {
+    padding: 10px 5px;
+    border: none;
+    border-radius: 6px;
+    background-color: #333;
+    color: #e0e0e0;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.difficulty-btn.active {
+    box-shadow: 0 0 0 2px #2a9d8f;
+}
+
+/* Difficulty level colors */
+.difficulty-btn[data-level="1"] { background-color: #2a9d8f; }
+.difficulty-btn[data-level="2"] { background-color: #3aaf9f; }
+.difficulty-btn[data-level="3"] { background-color: #4ac0af; }
+.difficulty-btn[data-level="4"] { background-color: #5ad0bf; }
+.difficulty-btn[data-level="5"] { background-color: #e9c46a; color: #333; }
+.difficulty-btn[data-level="6"] { background-color: #f4a261; color: #333; }
+.difficulty-btn[data-level="7"] { background-color: #e76f51; }
+.difficulty-btn[data-level="8"] { background-color: #d65b40; }
+.difficulty-btn[data-level="9"] { background-color: #c9472f; }
+
+/* Action Buttons */
+.action-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    padding: 14px 10px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+}
+
+.start-btn {
+    background-color: #2a9d8f;
+    color: white;
+}
+
+.start-btn:hover {
+    background-color: #21867a;
+}
+
+.pause-btn {
+    background-color: #e9c46a;
+    color: #333;
+}
+
+.pause-btn:hover {
+    background-color: #d4b259;
+}
+
+.reset-btn {
+    background-color: #e76f51;
+    color: white;
+}
+
+.reset-btn:hover {
+    background-color: #d65b40;
+}
+
+.hint-btn {
+    background-color: #4cc9f0;
+    color: #333;
+}
+
+.hint-btn:hover {
+    background-color: #3db5d9;
+}
+
+.solution-btn {
+    background-color: #7209b7;
+    color: white;
+}
+
+.solution-btn:hover {
+    background-color: #5e0896;
+}
+
+/* Number Selector */
+.number-selector {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+}
+
+.number-selector h3 {
+    color: #2a9d8f;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.number-buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.num-btn {
+    padding: 16px 10px;
+    border: none;
+    border-radius: 8px;
+    background-color: #333;
+    color: #e0e0e0;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.num-btn:hover {
+    background-color: #2a9d8f;
+    transform: translateY(-3px);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.3);
+}
+
+.clear-btn {
+    background-color: #444;
+    font-size: 1.2rem;
+}
+
+.clear-btn:hover {
+    background-color: #e76f51;
+}
+
+/* Sudoku Grid */
+.sudoku-grid {
+    display: grid;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(9, 1fr);
+    gap: 1px;
+    background-color: #333;
+    border: 3px solid #2a9d8f;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 500px;
+    height: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.cell {
+    background-color: #1e1e1e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 1px solid #333;
+    transition: background-color 0.2s;
+}
+
+.cell:hover {
+    background-color: #2a2a2a;
+}
+
+.cell.prefilled {
+    color: #2a9d8f;
+    cursor: default;
+}
+
+.cell.user-filled {
+    color: #e9c46a;
+}
+
+.cell.error {
+    color: #e76f51;
+}
+
+.cell.selected {
+    background-color: #2a3d45;
+    box-shadow: inset 0 0 0 2px #2a9d8f;
+}
+
+/* Border styling for 3x3 blocks */
+.cell:nth-child(3n) {
+    border-right: 2px solid #2a9d8f;
+}
+
+.cell:nth-child(9n) {
+    border-right: 1px solid #333;
+}
+
+.cell:nth-child(n+19):nth-child(-n+27),
+.cell:nth-child(n+46):nth-child(-n+54) {
+    border-bottom: 2px solid #2a9d8f;
+}
+
+/* Game Status */
+.game-status {
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 1px solid #333;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-status p {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+}
+
+.game-status.success {
+    color: #2a9d8f;
+    border-color: #2a9d8f;
+}
+
+.game-status.error {
+    color: #e76f51;
+    border-color: #e76f51;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1100px) {
+    .game-area {
+        flex-direction: column;
+    }
+    
+    .left-panel, .game-board {
+        width: 100%;
+        min-width: 100%;
+    }
+    
+    .sudoku-grid {
+        width: 100%;
+        max-width: 500px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .game-info {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+    
+    .difficulty-buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .number-buttons {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    header h1 {
+        font-size: 2.2rem;
+    }
+    
+    .sudoku-grid {
+        max-width: 100%;
+    }
+}

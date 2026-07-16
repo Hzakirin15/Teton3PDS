@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Teton Dashboard | Shortcut Links</title>
+    <!-- Separate CSS file: logfile3pds.css -->
+    <link rel="stylesheet" href="logfile3pds.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="#">
+</head>
+<body>
+
+<div class="app-container">
+    <!-- header with subtle gradient & professional tablet style -->
+    <div class="app-header">
+        <div class="header-left-group">
+            <a href="http://127.0.0.1:3000/mainpage2.html?vscode-livepreview=true" class="back-button" id="backButton">
+                <span class="back-arrow">←</span>
+            </a>
+            <div class="header-icon">📡</div>
+            <h1>Logfile Search</h1>
+        </div>
+        <div class="header-sub">Teton Node Access</div>
+    </div>
+
+    <!-- MAIN CARD: Teton3PDS Section - description removed, button beside search -->
+    <div class="card-section">
+        <div class="card-header">
+            <div class="title-badge">🟦</div>
+            <h2>Teton3PDS</h2>
+            <span class="version-tag">Amber</span>
+        </div>
+        <!-- card-description removed as requested -->
+        <div class="search-area">
+            <div class="input-group">
+                <label for="snTeton3">Serial Number (SN)</label>
+                <div class="search-wrapper-row">
+                    <div class="search-wrapper">
+                        <input type="text" id="snTeton3" placeholder="e.g., WAB3SW62200AY" autocomplete="off" spellcheck="false">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button id="openTeton3Btn" class="btn-open">⟳ Open Link</button>
+                </div>
+            </div>
+            <!-- link preview removed as requested -->
+        </div>
+    </div>
+
+    <!-- MAIN CARD: Teton3PDS Vld Section - description removed, button beside search -->
+    <div class="card-section">
+        <div class="card-header">
+            <div class="title-badge">🟩</div>
+            <h2>Teton3PDS Vld</h2>
+            <span class="version-tag">Amber</span>
+        </div>
+        <!-- card-description removed -->
+        <div class="search-area">
+            <div class="input-group">
+                <label for="snTeton2">Serial Number (SN)</label>
+                <div class="search-wrapper-row">
+                    <div class="search-wrapper">
+                        <input type="text" id="snTeton2" placeholder="e.g., WAA7JB618016Y" autocomplete="off" spellcheck="false">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <button id="openTeton2Btn" class="btn-open">⟳ Open Link</button>
+                </div>
+            </div>
+            <!-- link preview removed -->
+        </div>
+    </div>
+
+    <!-- simple footer decoration -->
+    <div class="app-footer">
+        <span>🔒 Secure internal tool · Teton node manager</span>
+        <span>v1.0 · tablet interface</span>
+    </div>
+</div>
+
+<script src="logfile3pds.js"></script>
+</body>
+</html>

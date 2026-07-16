@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Root Port</title>
+    <link rel="stylesheet" href="rootport.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Root Port 1 times Action</h1>
+        
+        <div class="text-box">
+            <h2>Root Port 0</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 0 - Action 1</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG0(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG0 SN">
+                <span>) <> JBOG3(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG3 SN">
+                <span>)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG0 <> JBOG1,</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommandrp1()">Copy Act 1</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action 1</span></span>
+                <span>&emsp;If Fail JBOG0, Continue Root Port 0 Action 2</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG1, Swap Back & Replace PCIE Cable JBOG0</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG3, Replace Baseboard JBOG3</span>
+            </div>
+
+            <br><br><br><div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 0 - Action 2</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap CN42 <> CN43 HN(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap CPU 0 <> 1 HN(),</span>
+            </div>
+            <button class="rootport0act2" onclick="copyCommandrp2()">Copy Act 2</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;"><span class="subheading1">Result Action 2</span></span>
+                <span>&emsp;If Fail JBOG0, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG1, Replace MCIO Cable Slot1(CN43)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace CPU1 HN</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 1</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 1 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG1(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG1 SN">
+                <span>) <> JBOG4(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG4 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG1 <> JBOG2,</span>
+                <span>&emsp;Swap CN43 <> CN42 HN(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap CPU 0 <> 1 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG0, Replace MCIO Cable Slot0(CN42)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG1, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG2, Swap Back & Replace PCIE Cable JBOG1</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace Baseboard JBOG4</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG5, Replace CPU1 HN</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 2</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 2 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG2(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG2 SN">
+                <span>) <> JBOG4(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG4 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG2 <> JBOG1,</span>
+                <span>&emsp;Swap CN44 <> CN45 HN(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 0 <> 1 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG1, Swap Back & Replace PCIE Cable JBOG2</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG2, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG3, Replace MCIO Cable Slot3(CN44)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace Baseboard JBOG4</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG6, Replace CPU1 HN</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 3</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 3 - Action</span></div><br>
+            
+            <div class="input-group">
+                <span>&emsp;Swap JBOG3(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG3 SN">
+                <span>) <> JBOG5(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG5 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG3 <> JBOG4,</span>
+                <span>&emsp;Swap CN45 <> CN44 HN(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 0 <> 1 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG2, Replace MCIO Cable Slot1(CN44)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG3, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Swap Back & Replace PCIE Cable JBOG3</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG5, Replace Baseboard JBOG5</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG7, Replace CPU1 HN</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 4</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 4 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG4(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG4 SN">
+                <span>) <> JBOG2(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG2 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG4 <> JBOG5,</span>
+                <span>&emsp;Swap CN45 <> CN49(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 0 <> 1 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG0, Replace CPU0 HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG2, Replace Baseboard JBOG2</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG5, Swap Back & Replace PCIE Cable JBOG4</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG7, Replace MCIO Cable Slot7(CN49)</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 5</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 5 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG5(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG4 SN">
+                <span>) <> JBOG2(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG2 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG5 <> JBOG4,</span>
+                <span>&emsp;Replace MCIO Cable CN47(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 0 <> 1 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG1, Replace CPU0 HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG2, Replace Baseboard JBOG2</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG5, Replace IO Board HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Swap Back & Replace PCIE Cable JBOG4</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 6</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 6 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG6(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG4 SN">
+                <span>) <> JBOG1(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG2 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG6 <> JBOG5,</span>
+                <span>&emsp;Swap CN48 <> CN46(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 1 <> 0 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG1, Replace Baseboard JBOG1</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG2, Replace CPU0 HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace MCIO Cable Slot4(CN46-JBOG4)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG5, Swap Back & Replace PCIE Cable JBOG6</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG6, Replace IO Board HN</span>
+            </div>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Root Port 7</h2>
+            <div class="command-line" style="font-weight: bold;"><span class="subheading">Root Port 7 - Action</span></div><br>
+            <div class="input-group">
+                <span>&emsp;Swap JBOG7(</span>
+                <input type="text" id="RP0JB0" placeholder="JBOG4 SN">
+                <span>) <> JBOG1(</span>
+                <input type="text" id="RP0JB3" placeholder="JBOG2 SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Swap PCIE Cable JBOG7 <> JBOG6,</span>
+                <span>&emsp;Swap CN49(JBOG7) <> CN46(JBOG4) HN(</span>
+                <input type="text" id="RP0JB0" placeholder="HN SN">
+                <span>),</span>
+                <span style="display: inline-block; width: 100%;">&emsp;Verify pin and Swap CPU 1 <> 0 HN()</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+            <div class="input-group">
+                <br><span style="display: inline-block; width: 100%; font-weight: bold;" ><span class="subheading1">Result Action</span></span>
+                <span>&emsp;If Fail JBOG1, Replace Baseboard JBOG1</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG3, Replace CPU0 HN</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG4, Replace MCIO Cable Slot7(CN46-JBOG4)</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG6, Swap Back & Replace PCIE Cable JBOG6</span>
+                <span style="display: inline-block; width: 100%;">&emsp;If Fail JBOG7, Replace IO Board HN</span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="rootport.js"></script>
+</body>
+</html>

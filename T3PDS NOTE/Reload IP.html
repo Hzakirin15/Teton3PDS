@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Concatenator</title>
+    <link rel="stylesheet" href="reload_ip.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Config & Reload IP</h1>
+        
+        <div class="text-box">
+            <h2>Reload IP</h2>
+            <div class="input-group">
+                <span>python run_test.py -proj teton2 -t TEST_IP_RELOAD -n '{"container_serial_num": "</span>
+                <input type="text" id="name" placeholder="RACK SN">
+                <span>"}'</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+        </div>
+        
+        <div class="text-box">
+            <h2>Config Console</h2>
+            <div class="command-line">1 - cd /bin</div><br>
+            <div class="input-group">
+                <span>2 - ./integrator_mode -m "1-48:1G;49-52:10G"</span>
+            </div>
+            <button class="copy-btn" onclick="copyHobby()">Copy</button>
+        </div>
+
+        <div class="text-box">
+            <h2>Config TOR Switch <span class="subheading">Purple</span> Tag</h2>
+            <div class="command-line">1 - cd /root/sdk/R3247-J0001-01_V15_CS8260_SDK/</div><br>
+            <div class="command-line">2 - ./integrator_mode -d -m "1-2:Copper_4x10G;3-8:Copper_2x100G;9-12:Copper_1x40G;13-24:4x100G;25-32:Copper_4x100G"</div>
+            <button class="copy-btn" onclick="copyPurpleTOR()">Copy</button>
+        </div>
+
+        <div class="text-box">
+            <h2>Config TOR Switch <span class="subheading1">Orange</span> Tag</h2>
+            <div class="command-line">1 - cd /bin/</div><br>
+            <div class="command-line">2 - ./integrator_mode -m "1-2:4x10G;3-8:2x100G;9-12:40G;13-32:Copper_4x100G"</div><br>
+            <div class="command-line">3 - ./onie-discovery-start</div>
+            <button class="copy-btn" onclick="copyOrangeTOR()">Copy</button>
+        </div>
+    </div>
+
+    <script src="reload_ip.js"></script>
+</body>
+</html>

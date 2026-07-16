@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tali panjang</title>
+    <link rel="stylesheet" href="Snake.css">
+</head>
+<body>
+    <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">← Back</a>
+    
+    <div class="game-container">
+        <div class="header">
+            <h1>🌈 Colorful Snake</h1>
+            <div class="score-board">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="high-score">High Score: <span id="high-score">0</span></div>
+            </div>
+            <div class="game-mode">
+                <span class="mode-indicator">🌐 Through Walls Mode</span>
+            </div>
+        </div>
+        
+        <div class="game-area">
+            <canvas id="gameCanvas" width="400" height="400"></canvas>
+            <div class="controls">
+                <div class="control-row">
+                    <button class="control-btn" id="up">↑</button>
+                </div>
+                <div class="control-row">
+                    <button class="control-btn" id="left">←</button>
+                    <button class="control-btn" id="down">↓</button>
+                    <button class="control-btn" id="right">→</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-info">
+            <button id="startBtn" class="action-btn">Start Game</button>
+            <button id="pauseBtn" class="action-btn">Pause</button>
+            <div class="instructions">
+                <p>Use arrow keys or buttons to control the snake</p>
+                <p>Eat the colorful food to grow and score points!</p>
+                <p>🌐 Snake can go through walls and appear on the opposite side</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="Snake.js"></script>
+</body>
+</html>

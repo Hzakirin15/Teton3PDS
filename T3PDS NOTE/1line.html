@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Style Arranger</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a1a1a;
+            color: #e0e0e0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            background-color: #2d2d2d;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #4cd964;
+            font-size: 28px;
+        }
+
+        .description {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #aaa;
+            line-height: 1.5;
+        }
+
+        .input-area {
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            background-color: #3d3d3d;
+            color: #fff;
+            border: 1px solid #4cd964;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #7ee787;
+            box-shadow: 0 0 0 2px rgba(76, 217, 100, 0.3);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #generateBtn {
+            background-color: #4cd964;
+            color: #1a1a1a;
+        }
+
+        #generateBtn:hover {
+            background-color: #7ee787;
+            transform: translateY(-2px);
+        }
+
+        #copyBtn {
+            background-color: #3d3d3d;
+            color: #4cd964;
+            border: 1px solid #4cd964;
+        }
+
+        #copyBtn:hover {
+            background-color: #4cd964;
+            color: #1a1a1a;
+            transform: translateY(-2px);
+        }
+
+        .output-area {
+            margin-bottom: 20px;
+        }
+
+        #output {
+            width: 100%;
+            min-height: 60px;
+            background-color: #3d3d3d;
+            color: #fff;
+            border: 1px solid #4cd964;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 16px;
+            word-break: break-all;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4cd964;
+            color: #1a1a1a;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .notification.show {
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .buttons {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Style Arranger</h1>
+        <p class="description">Enter your style codes (one per line) and generate a single line format.</p>
+        
+        <div class="input-area">
+            <textarea id="input" placeholder="Enter style codes, one per line. Example:&#10;WAA7JB5370FPY&#10;WAA7JB5370FNY&#10;WAA7JB5370FMY&#10;WAA7JB5370FLY">WAA7JB5370FPY
+WAA7JB5370FNY
+WAA7JB5370FMY
+WAA7JB5370FLY</textarea>
+        </div>
+        
+        <div class="buttons">
+            <button id="generateBtn">Generate</button>
+            <button id="copyBtn">Copy Result</button>
+        </div>
+        
+        <div class="output-area">
+            <div id="output"></div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification">Copied to clipboard!</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const inputEl = document.getElementById('input');
+            const outputEl = document.getElementById('output');
+            const generateBtn = document.getElementById('generateBtn');
+            const copyBtn = document.getElementById('copyBtn');
+            const notificationEl = document.getElementById('notification');
+            
+            // Generate the single line format
+            generateBtn.addEventListener('click', function() {
+                const inputText = inputEl.value.trim();
+                if (!inputText) {
+                    outputEl.textContent = 'Please enter some codes first.';
+                    return;
+                }
+                
+                const lines = inputText.split('\n')
+                    .map(line => line.trim())
+                    .filter(line => line.length > 0);
+                
+                if (lines.length === 0) {
+                    outputEl.textContent = 'Please enter some valid codes.';
+                    return;
+                }
+                
+                outputEl.textContent = lines.join(' ');
+            });
+            
+            // Copy the result to clipboard
+            copyBtn.addEventListener('click', function() {
+                const outputText = outputEl.textContent;
+                if (!outputText) {
+                    showNotification('Nothing to copy! Generate first.', true);
+                    return;
+                }
+                
+                navigator.clipboard.writeText(outputText)
+                    .then(() => {
+                        showNotification('Copied to clipboard!');
+                    })
+                    .catch(err => {
+                        console.error('Failed to copy: ', err);
+                        showNotification('Failed to copy!', true);
+                    });
+            });
+            
+            // Show notification
+            function showNotification(message, isError = false) {
+                notificationEl.textContent = message;
+                notificationEl.style.backgroundColor = isError ? '#ff4d4d' : '#4cd964';
+                notificationEl.style.color = isError ? '#fff' : '#1a1a1a';
+                
+                notificationEl.classList.add('show');
+                
+                setTimeout(() => {
+                    notificationEl.classList.remove('show');
+                }, 2000);
+            }
+            
+            // Generate on page load
+            generateBtn.click();
+        });
+    </script>
+</body>
+</html>

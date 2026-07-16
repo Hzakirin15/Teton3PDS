@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swap JBOG Notes</title>
+    <link rel="stylesheet" href="note.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            
+        </header>
+
+        <main>
+            <div class="note-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-exchange-alt"></i> Swap Diagram & Notes</h2>
+                    
+                </div>
+                
+                <div class="content-box">
+                    <!-- Image Display -->
+                    <div class="image-container">
+                        <div class="image-header">
+                            <h3><i class="fas fa-image"></i> Swap JBOG Diagram</h3>
+                            <div class="image-controls">
+                                <button id="zoomInBtn" class="control-btn">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                                <button id="zoomOutBtn" class="control-btn">
+                                    <i class="fas fa-search-minus"></i>
+                                </button>
+                                <button id="resetZoomBtn" class="control-btn">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="image-wrapper">
+                            <img id="swapImage" src="NotePic/SwapJBOGpic.png" alt="Swap JBOG Diagram">
+                            
+                        </div>
+
+                        <div class="notes-content">
+                            <div class="notes-display" id="notesDisplay">
+                                <!-- Notes will be displayed here -->
+                                <div class="note-item">
+                                    <span class="note-number">1.</span>
+                                    <span class="note-text">Always verify JBOG serial numbers before swapping</span>
+                                </div>
+                                <div class="note-item">
+                                    <span class="note-number">2.</span>
+                                    <span class="note-text">Ensure system is in maintenance mode before proceeding</span>
+                                </div>
+                                <div class="note-item">
+                                    <span class="note-number">3.</span>
+                                    <span class="note-text">Document all swap procedures in the system log</span>
+                                </div>
+                                <div class="note-item">
+                                    <span class="note-number">4.</span>
+                                    <span class="note-text">Perform post-swap verification tests</span>
+                                </div>
+                                <div class="note-item">
+                                    <span class="note-number">5.</span>
+                                    <span class="note-text">Notify relevant teams after completion</span>
+                                </div>
+                            </div>
+                            
+                            <div class="notes-edit" id="notesEdit" style="display: none;">
+                                <textarea id="notesTextarea" placeholder="Enter your notes here (one per line)..."></textarea>
+                                <div class="edit-controls">
+                                    <button id="saveNotesBtn" class="save-btn">
+                                        <i class="fas fa-save"></i> Save Notes
+                                    </button>
+                                    <button id="cancelEditBtn" class="cancel-btn">
+                                        <i class="fas fa-times"></i> Cancel
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+ 
+                    </div>
+                </div>
+                
+            </div>
+        </main>
+
+        <footer>
+        
+        </footer>
+    </div>
+
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i> <span id="notificationText">Notification message</span>
+    </div>
+
+    <script src="note.js"></script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Power BI Hub | Shortcut Dashboard</title>
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="powerbi.css">
+    <!-- Google Fonts for modern friendly look -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (Free icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header with tablet-app style + back button at top left -->
+        <header class="dashboard-header">
+            <!-- Back button container - top left corner -->
+            <div class="header-back">
+                <a href="https://hzakirin15.github.io/Teton-2-Debug/WriteNote/mainpage.html" class="back-button" title="Back to main page">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+            </div>
+            
+            <div class="header-brand">
+                <div class="icon-bg">
+                    <i class="fas fa-chalkboard-user"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>Power BI Launchpad</h1>
+                    <p>Your analytics shortcuts · instant access</p>
+                </div>
+            </div>
+            <div class="header-date" id="liveDate">
+                <!-- js will inject date -->
+            </div>
+        </header>
+
+        <!-- Main section: exactly 5 shortcut cards (apps) in single row -->
+        <section class="shortcuts-section">
+            <div class="section-title">
+                <i class="fas fa-th-large"></i>
+                <h2>Cycle Time Power BI  Dashboards</h2>
+                <span class="badge">shortcuts link</span>
+            </div>
+            <div class="cards-grid" id="shortcutGrid">
+                <!-- JavaScript will inject 5 cards from JSON data -->
+            </div>
+        </section>
+
+        <!-- Main section: exactly 5 shortcut cards (apps) in single row -->
+        <section class="shortcuts-section">
+            <div class="section-title">
+                <i class="fas fa-th-large"></i>
+                <h2>FPY Power BI  Dashboards</h2>
+                <span class="badge">shortcuts link</span>
+            </div>
+            <div class="cards-grid" id="shortcutGrid1">
+                <!-- JavaScript will inject 5 cards from JSON data -->
+            </div>
+        </section>
+
+        <!-- optional footer note - subtle, friendly -->
+        <footer class="dashboard-footer">
+            <p><i class="fas-regular fa-circle-check"></i> Trusted Power BI reports · one-click launch</p>
+        </footer>
+    </div>
+
+    <!-- external javascript module -->
+    <script src="powerbi.js"></script>
+</body>
+</html>

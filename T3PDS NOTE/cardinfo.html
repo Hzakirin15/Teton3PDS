@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copipeslab  Card Info</title>
+    <link rel="stylesheet" href="cardinfo.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Card Info</h1>
+        
+        <div class="text-box">
+            <h2>Card Info</h2>
+            <div class="input-group">
+                <span>coap -O65001,0 -Y coaps+tcp://</span>
+                <input type="text" id="name" placeholder="K2V4 IP">
+                <span>/api-v1/healthcheck/boot | grep "card_info"</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommand()">Copy</button>
+        </div>
+
+        <div class="text-box">
+            <h2>If Card Info = <span class="subheading">false</span></h2><br>
+            <div class="command-line">1 - nvme list | grep -c nvme</div><br>
+            <div class="input-group">
+                <span>2 - lspci -vvv | grep -c AL10</span>
+            </div>
+            <div class="input-group">
+                <span>3 - lspci -vvv | grep -c Amazon</span>
+            </div>
+            <div class="input-group">
+                <span>4 - lspci -vt</span>
+            </div>
+            <button class="copy-btn-false1" onclick="false1()">Copy</button>
+            <button class="copy-btn-false2" onclick="false2()">Copy</button>
+            <button class="copy-btn-false3" onclick="false3()">Copy</button>
+            <button class="copy-btn-false4" onclick="false4()">Copy</button>
+        </div>
+
+        <div class="text-box">
+            <h2>Fru Check</h2>
+            <div class="inputbmc">
+                <span>./nitro-bmc -i</span>
+                <input type="text" id="namebmc" placeholder="BMC IP">
+                <span>fru print</span>
+            </div>
+            <button class="copy-btn" onclick="copyCommandbmc()">Copy</button>
+        </div>
+        
+
+    <script src="cardinfo.js"></script>
+</body>
+</html>

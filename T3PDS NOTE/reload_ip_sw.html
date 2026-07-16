@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Concatenator</title>
+    <link rel="stylesheet" href="reload_ip_sw.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Config T2PDS Switch Fixtures</h1>
+        
+        
+        <div class="text-box">
+            <h2>Config Console</h2>
+            <div class="command-line">1 - cd /bin</div><br>
+            <div class="input-group">
+                <span>2 - ./integrator_mode -m "1-48:1G;49-52:10G"</span>
+            </div>
+            <button class="copy-btn" onclick="copyHobby()">Copy</button>
+        </div>
+
+
+        <div class="text-box">
+            <h2>Config TOR Switch <span class="subheading1">Orange</span> Tag</h2>
+            <div class="command-line">1 - cd /bin/</div><br>
+            <div class="command-line">2 - ./integrator_mode -m "1-8:4x100G;9-10:40G;11-32:4x100G"</div><br>
+            <div class="command-line">3 - ./onie-discovery-start</div>
+            <button class="copy-btn" onclick="copyOrangeTOR()">Copy</button>
+        </div>
+    </div>
+
+    <script src="reload_ip_sw.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+:root {
+    --primary-color: #f0f4f8;
+    --secondary-color: #ffffff;
+    --accent-color: #4f46e5;
+    --accent-light: #eef2ff;
+    --accent-hover: #6366f1;
+    --text-color: #1e293b;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --header-color: #4f46e5;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --border-radius: 20px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #9da6b4 0%, #eef2f7 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 2rem;
+}
+
+.app-drawer {
+    width: 90%;
+    max-width: 1400px;
+    height: auto;
+    min-height: 90vh;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+    box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-header {
+    padding: 20px 24px;
+    background: #a9acd1;
+    text-align: center;
+    border-bottom: 2px solid #3e427a;
+    position: relative;
+}
+
+.app-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #4f46e5, #8b5cf6, #ec4899);
+    border-radius: 3px;
+}
+
+.app-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #182c6e 0%, #06809e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.3px;
+}
+
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 32px;
+    flex-grow: 1;
+    overflow-y: auto;
+    background: #fefefe;
+}
+
+.app-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+    padding: 8px 4px;
+    border-radius: 16px;
+}
+
+.app-item:hover {
+    transform: translateY(-4px);
+}
+
+.app-icon {
+    width: 70px;
+    height: 70px;
+    background-color: var(--accent-light);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 12px;
+    box-shadow: var(--card-shadow);
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+.app-item:hover .app-icon {
+    box-shadow: var(--card-shadow-hover);
+    transform: scale(1.02);
+}
+
+.app-icon i {
+    font-size: 32px;
+    color: white;
+}
+
+.app-name {
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--text-secondary);
+    word-break: break-word;
+    max-width: 100px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.app-item:hover .app-name {
+    color: var(--accent-color);
+}
+
+/* Responsive adjustments - keeping original breakpoints */
+@media (max-width: 768px) {
+    .apps-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 16px;
+        padding: 20px;
+    }
+    
+    .app-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .app-name {
+        font-size: 0.75rem;
+    }
+    
+    .app-header h1 {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+        padding: 16px;
+    }
+    
+    .app-icon {
+        width: 55px;
+        height: 55px;
+        border-radius: 16px;
+    }
+    
+    .app-name {
+        font-size: 0.7rem;
+    }
+}
+
+/* Scrollbar styling - modern and clean */
+.apps-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.apps-grid::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 10px;
+}
+
+.apps-grid::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+.apps-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Image icons - maintain original sizing */
+.app-icon img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Keep your special styling for Actionlogo.png */
+.app-icon img[src*="iconAction.png"] {
+    max-width: 100%;
+    max-height: 100%;
+    filter: brightness(0) saturate(100%) invert(35%) sepia(98%) saturate(748%) hue-rotate(202deg) brightness(92%) contrast(95%);
+}
+
+/* Additional polish for app-item active state */
+.app-item:active {
+    transform: scale(0.97);
+}
+
+/* Add subtle focus ring for accessibility */
+.app-item:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 12px;
+}
