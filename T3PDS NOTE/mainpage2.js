@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
             bgColor: "rgb(220, 240, 243)"  // Blue accent
         },
         { 
+            name: "Request RNIN", 
+            file: "rnin.html", 
+            icon: "icon/rootport.png",
+            bgColor: "rgb(220, 240, 243)"  // Blue accent
+        },
+        { 
             name: "SFCS", 
             file: "SFCS.html", 
             icon: "icon/server.webp",
@@ -36,13 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
         { 
             name: "Config SW Fixtures", 
             file: "reload_ip_sw.html", 
-            icon: "icon/swapping.png",
+            icon: "icon/reload.png",
             bgColor: "rgb(245, 209, 221)"  // Blue accent
         },
         { 
             name: "Power BI", 
             file: "powerbi.html", 
-            icon: "icon/swapping.png",
+            icon: "icon/base.png",
             bgColor: "rgb(243, 220, 228)"  // Blue accent
         },
         { 
