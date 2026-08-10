@@ -56,9 +56,8 @@ document.addEventListener('DOMContentLoaded', function() {
             file: "https://cloudadmwiwynn-my.sharepoint.com/shared?listurl=https%3A%2F%2Fcloudadmwiwynn%2Dmy%2Esharepoint%2Ecom%2Fpersonal%2Famirudin%5Fshedek%5Fwiwynn%5Fcom%2FDocuments&id=%2Fpersonal%2Famirudin%5Fshedek%5Fwiwynn%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files%2FTeton3PDS99%2DTroubleShootingGuide%5Fv1%2E8%5F20260807%2Epdf&parent=%2Fpersonal%2Famirudin%5Fshedek%5Fwiwynn%5Fcom%2FDocuments%2FMicrosoft%20Teams%20Chat%20Files&ct=1786346545262&or=Teams%2DHL&shareLink=1&ga=1&LOF=1", 
             icon: "icon/rootport.png",
             bgColor: "#254a5dff"  // Blue accent
-        },
-        { 
-        { 
+         },
+        {
             name: "Snake", 
             file: "Snake.html", 
             icon: "icon/snake.webp",
