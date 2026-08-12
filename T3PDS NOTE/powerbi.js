@@ -72,7 +72,7 @@
             "id": 1,
             "name": "FPY Amber",
             "description": "Core analytics & metrics",
-            "url": "https://app.powerbi.com/view?r=eyJrIjoiMDg1Mzc2OWEtNGQ5OS00Nzc4LWIyOGUtZjM0NDlmYjllNzVmIiwidCI6ImRhNmUwNjI4LWZjODMtNGNhZi05ZGQyLTczMDYxY2JhYjE2NyIsImMiOjEwfQ%3D%3D&pageName=ReportSection6efd733c6349a7791304",
+            "url": "https://app.powerbi.com/groups/me/reports/e1ee79a3-f415-424a-b2b6-b3e6820b6a0a/fa0c0d001741309d3e07?ctid=da6e0628-fc83-4caf-9dd2-73061cbab167&experience=power-bi&bookmarkGuid=d56f702d-8885-4310-884c-744cadcf4b83",
             "icon": "fa-server"
         }
         // Note: Ambrose is not displayed to strictly satisfy "5 app shortcut link"
