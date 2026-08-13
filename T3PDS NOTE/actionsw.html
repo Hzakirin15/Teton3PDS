@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>Action · tablet</title>
+  <link rel="stylesheet" href="actionsw.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- header -->
+    <header class="app-header">
+      <div class="header-left">
+        <a href="http://127.0.0.1:3000/mainpage2.html?vscode-livepreview=true" class="back-button" title="Go back">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back
+        </a>
+        <h1>Action</h1>
+      </div>
+      <span class="badge">v1</span>
+    </header>
+
+    <!-- main content - single section box -->
+    <main class="card">
+      <section class="main-box">
+        
+        <!-- Paste raw text -->
+        <div class="input-group">
+          <label>📋 Paste raw text</label>
+          <textarea id="templateInput" placeholder="Paste the raw template text here ..."></textarea>
+          <div class="button-row">
+            <button id="extractBtn" class="btn btn-primary">🔍 Extract</button>
+            <button id="copyBtn" class="btn btn-copy">📋 Copy</button>
+          </div>
+          <div id="extractFeedback" class="feedback"></div>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+
+        <!-- Action - auto-generates when you type -->
+        <div class="input-group">
+          <label>✏️ Action <span style="font-weight: 400; color: #8a9aaa; font-size: 13px;">(auto-generates)</span></label>
+          <input type="text" id="actionInput" placeholder="Enter action..." value="Retest">
+          <div id="actionFeedback" class="feedback"></div>
+        </div>
+
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Action Tool</span>
+    </footer>
+  </div>
+
+  <script src="actionsw.js"></script>
+</body>
+</html>
