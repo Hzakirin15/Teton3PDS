@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const apps = [
         { 
             name: "Action", 
-            file: "Action.html", 
+            file: "actionsw.html", 
             icon: "icon/Action.png",
             bgColor: "#f3ebc8"  // Purple accent
         },
