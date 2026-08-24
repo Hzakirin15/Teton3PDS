@@ -74,7 +74,13 @@ document.addEventListener('DOMContentLoaded', function() {
             file: "Math.html", 
             icon: "icon/math.png",
             bgColor: "rgb(201, 208, 231)"  // Blue accent
-        },
+        },,
+        { 
+            name: "Downgrade SWB FW", 
+            file: "downgradesw.html", 
+            icon: "icon/kegigor.webp",
+            bgColor: "rgb(220, 240, 243)"  // Blue accent
+        }
         
     ];
 
