@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copipeslab  Card Info</title>
+    <link rel="stylesheet" href="downgradesw.css">
+</head>
+<body>
+    <div class="container">
+        <a href="http://127.0.0.1:3000/mainpage.html" class="back-button">←</a>
+        <h1>Downgrade  Switch Firmware T3PDS</h1>
+
+        <div class="text-box">
+            <h2>Step</h2><br>
+            <div class="command-line">1 - sudo su</div><br>
+            <div class="input-group">
+                <span>2 - d1</span>
+            </div>
+            <div class="input-group">
+                <span>3 - cd /root/users/YM2310005/t2pds_sw_pex_fw</span>
+            </div>
+            <div class="input-group">
+                <span>4 - ./t2pds_sw_pex_fw_update.sh <input type="text" id="name" placeholder="K2V5 IP"></span>
+            </div>
+            <button class="copy-btn-false1" onclick="false1()">Copy</button>
+            <button class="copy-btn-false2" onclick="false2()">Copy</button>
+            <button class="copy-btn-false3" onclick="false3()">Copy</button>
+            <button class="copy-btn-false4" onclick="copyCommand()">Copy</button>
+        </div>
+
+
+    <script src="downgradesw.js"></script>
+</body>
+</html>
