@@ -249,7 +249,7 @@ inputbmc::placeholder {
 }
 
 #name {
-    width: 80px;
+    width: 150px;
     min-width: 70px;
     max-width: 120px;
     padding: 8px 12px;
