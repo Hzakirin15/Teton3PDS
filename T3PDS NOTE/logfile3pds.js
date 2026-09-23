@@ -12,7 +12,7 @@
         },
         teton2: {
             baseUrl: "http://10.251.228.120:9882/node/",
-            apiParam: "http%3A%2F%2F10.251.228.149",
+            apiParam: "http%3A%2F%2F10.251.228.56",
             displayType: "full",
             projectId: "4"
         }
