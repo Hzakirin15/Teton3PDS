@@ -177,7 +177,7 @@
             {
                 "name": "Teton2",
                 "baseEndpoint": "http://10.251.228.120:9882/node/",
-                "apiGateway": "http://10.251.228.149",
+                "apiGateway": "http://10.251.228.56",
                 "project": 4,
                 "displayMode": "full"
             }
